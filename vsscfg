@@ -1,0 +1,51 @@
+#!/bin/bash
+#
+# SO 2013 - FASE 1 
+#
+# GRUPO so007
+# 39295 Diogo Marques
+#
+# vsscfg
+
+#MAIN
+
+if [ ${#*} -gt 0 ]
+then
+	for i in $*
+	do
+		case $i in
+		-f) longest_problem;;
+		-d) problems_solved;;
+		-c) max_instances;;
+		-v) validate;;
+		*) echo -e "Argumento $1 invalido" && showhelp;;
+		esac
+		shift
+	done
+else showhelp
+fi
+
+###########FUNCOES NECESSÁRIAS A EXECUCAO DO SCRIPT##########
+
+validate(){
+	checkDuplicates;
+	checkDeclarations;
+	checkDiskSectors;
+	checkDiskImages;
+}
+
+checkDiskSectors(){
+
+}
+
+checkDiskImages(){
+
+}
+
+checkDuplicates(){
+
+}
+
+checkDeclarations(){
+
+}
