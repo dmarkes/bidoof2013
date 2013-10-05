@@ -24,10 +24,5 @@ restore:
 	cp -rnv --preserve=timestamps ~/areas_de_grupo/so000/raidvss/* .
 	
 backup:
-	if [ ! -d "backups" ]
-	then 
-		mkdir backups
-		tar -czvf backups/backup_`date +%m%d%H%M`.tar.gz *
-	else
-		tar -czvf backups/backup_`date +%m%d%H%M`.tar.gz * --exclude backups
-	fi
+	./backup
+	
