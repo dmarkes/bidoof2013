@@ -1,5 +1,3 @@
-#!/bin/bash
-#
 # SO 2013 - FASE 1 
 #
 # GRUPO so007
@@ -24,5 +22,4 @@ restore:
 	cp -rnv --preserve=timestamps ~/areas_de_grupo/so000/raidvss/* .
 	
 backup:
-	./backup
-	
+	./backup.sh
