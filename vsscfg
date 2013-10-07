@@ -7,45 +7,53 @@
 #
 # vsscfg
 
+fname=vsscfg.vss
+disk=0
+did=0
+dtamanho=0
+conf=0
+cnome=0
+c
+
 #MAIN
 
-if [ ${#*} -gt 0 ]
+if [ $# -gt 0 ]
 then
 	for i in $*
 	do
 		case $i in
-		-f) longest_problem;;
-		-d) problems_solved;;
-		-c) max_instances;;
+		-f) shift && fname=$1 && shift;;
+		-d) shift && disk=1 && addDisk && shift;;
+		-c) shift && conf=1 && addConf && shift;;
 		-v) validate;;
-		*) echo -e "Argumento $1 invalido" && showhelp;;
+		*) echo -e "Argumento $1 invalido" ;;
 		esac
-		shift
 	done
-else showhelp
 fi
+
+
 
 ###########FUNCOES NECESSÁRIAS A EXECUCAO DO SCRIPT##########
 
-validate(){
-	checkDuplicates;
-	checkDeclarations;
-	checkDiskSectors;
-	checkDiskImages;
-}
+# validate(){
+# 	checkDuplicates;
+# 	checkDeclarations;
+# 	checkDiskSectors;
+# 	checkDiskImages;
+# }
 
-checkDiskSectors(){
+# checkDiskSectors(){
 
-}
+# }
 
-checkDiskImages(){
+# checkDiskImages(){
 
-}
+# }
 
-checkDuplicates(){
+# checkDuplicates(){
 
-}
+# }
 
-checkDeclarations(){
+# checkDeclarations(){
 
-}
+# }
