@@ -7,7 +7,13 @@
 #
 # vsslr
 
-for i in `ls logs/`
+logdir=
+
+for i in `ls logs/ | grep log.gz`
 do
-	echo $i | awk -F. '{print $(NF-2)}'
+	if [ `echo $i | awk -F. '{print $(NF-2)}'` -ge $1 ]
+	then	
+		rm logs/$i
+	fi
+	mv logs/$i logs/$i | awk -F. ' OFS="." {$(NF-2)=$(NF-2)+1; print $0}'
 done
