@@ -9,5 +9,5 @@
 
 for i in `ls logs/`
 do
-	echo $i | awk -F. '{print $2}'
+	echo $i | awk -F. '{print $(NF-2)}'
 done
