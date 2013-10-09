@@ -6,3 +6,8 @@
 # 39295 Diogo Marques
 #
 # vsslr
+
+for i in `ls logs/`
+do
+	echo $i | awk -F. '{print $2}'
+done
