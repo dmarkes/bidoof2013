@@ -2,6 +2,8 @@
 #
 # GRUPO so007
 # 39295 Diogo Marques
+# 40376 Fábio Videira
+# 39268 Gonçalo Graça
 #
 # makefile
 

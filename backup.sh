@@ -7,7 +7,7 @@
 # 40376 Fábio Videira
 # 39268 Gonçalo Graça
 #
-# backup
+# backup.sh
 
 if [ ! -d "backups" ]
 	then 
