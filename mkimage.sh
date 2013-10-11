@@ -11,7 +11,7 @@
 
 if [ $# -eq 1 ] 
 	then
-		dd if=/dev/urandom bs=1 count=$1 2>/dev/null | strings
+		strings /dev/urandom | dd bs=1 count=$1
 	else
 		echo "O script recebe como unico argumento um numero inteiro"
 fi
