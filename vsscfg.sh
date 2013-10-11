@@ -4,8 +4,10 @@
 #
 # GRUPO so007
 # 39295 Diogo Marques
+# 40376 Fábio Videira
+# 39268 Gonçalo Graça
 #
-# vsscfg
+# vsscfg.sh
 
 fname=vsscfg.vss
 disk=0
