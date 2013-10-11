@@ -21,7 +21,7 @@ fi
 
 for i in `find $logdir -name *.log.gz`
 do
-	if [ `echo $i | awk -F. '{print $(NF-2)}'` -ge $1 ]
+	if [ `echo $i | awk -F. '{print $(NF-2)}'` -ge $age ]
 	then	
 		rm $i
 	fi

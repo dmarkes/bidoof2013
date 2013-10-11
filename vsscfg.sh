@@ -15,7 +15,40 @@ did=0
 dtamanho=0
 conf=0
 cnome=0
-c
+
+
+###########FUNCOES NECESSÁRIAS A EXECUCAO DO SCRIPT##########
+
+validate(){
+checkDuplicates
+checkDeclarations
+checkDiskSectors
+checkDiskImages
+}
+
+addDisk(){
+echo addDisk
+}
+
+addConf(){
+echo addConf
+}
+
+checkDiskSectors(){
+echo checkDiskSectorssssssssss
+}
+
+checkDiskImages(){
+echo checkDiskImages
+}
+
+checkDuplicates(){
+echo checkDuplicates
+}
+
+checkDeclarations(){
+echo checkDeclarations
+}
 
 #MAIN
 
@@ -28,34 +61,10 @@ then
 		-d) shift && disk=1 && addDisk && shift;;
 		-c) shift && conf=1 && addConf && shift;;
 		-v) validate;;
-		*) echo -e "Argumento $1 invalido" ;;
+		*) echo -e * ;;
 		esac
 	done
 fi
 
 
 
-###########FUNCOES NECESSÁRIAS A EXECUCAO DO SCRIPT##########
-
-# validate(){
-# 	checkDuplicates;
-# 	checkDeclarations;
-# 	checkDiskSectors;
-# 	checkDiskImages;
-# }
-
-# checkDiskSectors(){
-
-# }
-
-# checkDiskImages(){
-
-# }
-
-# checkDuplicates(){
-
-# }
-
-# checkDeclarations(){
-
-# }
