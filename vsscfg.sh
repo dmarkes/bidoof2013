@@ -9,13 +9,15 @@
 #
 # vsscfg.sh
 
-fname=vsscfg.vss
+fname=config.vss
 disk=0
 did=0
 dtamanho=0
 conf=0
 cnome=0
-
+cid1=0
+cid2=0
+cfname=0
 
 ###########FUNCOES NECESSÁRIAS A EXECUCAO DO SCRIPT##########
 
@@ -27,11 +29,11 @@ checkDiskImages
 }
 
 addDisk(){
-echo addDisk
+echo "disk $did $dtamanho" >> $fname
 }
 
 addConf(){
-echo addConf
+echo "raidvss $cnome $cid1 $cid2 $cfname" >> $fname
 }
 
 checkDiskSectors(){
@@ -57,14 +59,31 @@ then
 	for i in $*
 	do
 		case $i in
-		-f) shift && fname=$1 && shift;;
-		-d) shift && disk=1 && addDisk && shift;;
-		-c) shift && conf=1 && addConf && shift;;
+		-f) if [ "$2" != "-d" ] && [ "$2" != "-c" ] && [ "$2" != "-v" ] && [ -n "$2" ]
+			then fname=$2 && shift 2
+			else shift
+			fi;;
+		-d) if [ "$2" != "-c" ] && [ "$2" != "-v" ] && [ "$2" != "-f" ] && [ -n "$2" ]
+			then disk=1 && did=$2 && dtamanho=$3 && shift 3
+			else disk=1 && echo "Insira ID do disco:" && read did && echo "Insira tamanho do disco:" && read dtamanho && shift
+			fi;;
+		-c) if [ "$2" != "-f" ] && [ "$2" != "-d" ] && [ "$2" != "-v" ] && [ -n "$2" ]
+			then conf=1 && cnome=$2 && cid1=$3 && cid2=$4 && cfname=$5 && shift 5
+			else conf=1 && echo "Insira nome da configuracao:" && read cnome && echo "Disk ID 1:" && read cid1 && echo "Disk ID 2:" && read cid2 && echo "Nome do ficheiro de imagem:" && read cfname && shift
+			fi;;
 		-v) validate;;
-		*) echo -e * ;;
 		esac
 	done
 fi
 
+if [ $disk -eq 1 ]
+	then addDisk
+fi
 
+if [ $conf -eq 1 ]
+	then addConf
+fi
 
+if [ $conf -eq 0 ] && [ $disk -eq 0 ]
+	then cat $fname 
+fi
