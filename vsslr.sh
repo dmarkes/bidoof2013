@@ -19,7 +19,7 @@ fi
 #######################################################
 
 
-for i in `find $logdir -name *.log.gz`
+for i in `find $logdir -name '*.log.gz'`
 do
 	if [ `echo $i | awk -F. '{print $(NF-2)}'` -ge $age ]
 	then	
@@ -27,12 +27,12 @@ do
 	fi
 done
 
-for i in `find $logdir -name *.log.gz`
+for i in `find $logdir -name '*.log.gz'`
 do 
 	mv $i `echo $i | awk 'BEGIN {OFS="."; FS="."} ;{$(NF-2)=$(NF-2)+1; print $0}'`
 done
 
-for i in `find $logdir -name *.log`
+for i in `find $logdir -name '*.log'`
 do
 	gzip $i
 	mv $i.gz `echo $i.gz | sed s/.log.gz/.0.log.gz/g`
