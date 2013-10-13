@@ -10,10 +10,16 @@
 BASE_DIR = .
 SRC_DIR = src
 INC_DIR = include
-OBJ_DIR = objs
+OBJ_DIR = obj
 TEST_DIR = tests
 CC = gcc
-CFLAGS= 
+CFLAGS=-Wall –I$(INC_DIR)
+
+$(BASE_DIR)/disk: $(OBJ_DIR)/disk.o $(OBJ_DIR)/diskutils.o $(OBJ_DIR)/conffile.o $(OBJ_DIR)/conffileutils.o $(OBJ_DIR)/ipc.o $(OBJ_DIR)/log.o 
+	$(CC) $(CFLAGS) $(OBJ_DIR)/disk.o $(OBJ_DIR)/diskutils.o $(OBJ_DIR)/conffile.o $(OBJ_DIR)/conffileutils.o $(OBJ_DIR)/ipc.o $(OBJ_DIR)/log.o -o disk 
+
+$(BASE_DIR)/controller: $(OBJ_DIR)/controller.o $(OBJ_DIR)/request.o $(OBJ_DIR)/conffileutils.o $(OBJ_DIR)/conffile.o $(OBJ_DIR)/ipc.o 
+	$(CC) $(CFLAGS) $(OBJ_DIR)/controller.o $(OBJ_DIR)/request.o $(OBJ_DIR)/conffileutils.o $(OBJ_DIR)/conffile.o $(OBJ_DIR)/ipc.o -o controller
 
 $(OBJ_DIR)/ipc.o: $(SRC_DIR)/ipc.c $(INC_DIR)/ipc.h
 	$(CC) $(CFLAGS) -c $(SRC_DIR)/ipc.c
@@ -38,12 +44,6 @@ $(OBJ_DIR)/disk.o: $(SRC_DIR)/disk.c $(INC_DIR)/raidvss.h $(INC_DIR)/diskutils.h
 	
 $(OBJ_DIR)/controller.o: $(SRC_DIR)/controller.c $(INC_DIR)/raidvss.h $(INC_DIR)/request.h $(INC_DIR)/conffileutils.h $(INC_DIR)/conffile.h $(INC_DIR)/ipc.h
 	$(CC) $(CFLAGS) -c $(SRC_DIR)/controller.c
-
-$(BASE_DIR)/disk: $(OBJ_DIR)/disk.o $(OBJ_DIR)/diskutils.o $(OBJ_DIR)/conffile.o $(OBJ_DIR)/conffileutils.o $(OBJ_DIR)/ipc.o $(OBJ_DIR)/log.o 
-	$(CC) $(CFLAGS) $(OBJ_DIR)/disk.o $(OBJ_DIR)/diskutils.o $(OBJ_DIR)/conffile.o $(OBJ_DIR)/conffileutils.o $(OBJ_DIR)/ipc.o $(OBJ_DIR)/log.o -o disk 
-
-$(BASE_DIR)/controller: $(OBJ_DIR)/controller.o $(OBJ_DIR)/request.o $(OBJ_DIR)/conffileutils.o $(OBJ_DIR)/conffile.o $(OBJ_DIR)/ipc.o 
-	$(CC) $(CFLAGS) $(OBJ_DIR)/controller.o $(OBJ_DIR)/request.o $(OBJ_DIR)/conffileutils.o $(OBJ_DIR)/conffile.o $(OBJ_DIR)/ipc.o -o controller
 
 clean:
 	rm -fv $(OBJ_DIR)/*.o $(BASE_DIR)/controller $(BASE_DIR)/disk
