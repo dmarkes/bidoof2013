@@ -7,7 +7,7 @@
  * Copia um pedido da origem para o destino 
  */
 void copy_request(request_t* origem,request_t* destino){
-	*destino=*origem;
+	destino=&(*origem);
 }
 
 /**
