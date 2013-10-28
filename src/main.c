@@ -6,8 +6,8 @@
 #include "conffileutils.h"
 
 int main(int argc, char *argv[]){
-	char* z[] = {"fsa","-f","conf","0"};
-	char t[255];
+	char z[] = "sfdfda";
+	printf("%s\n",z);
 
 
 
