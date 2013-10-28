@@ -1,5 +1,6 @@
-#include <stdio.h>
-#include <string.h>
+#include<stdio.h>
+#include<string.h>
+
 #include "conffileutils.h"
 #include "raidvss.h"
 
@@ -25,18 +26,49 @@ char* chop(char* s){
 	return s+startAt;
 }
 
-// /**
-//  * Preenche uma estrutura conffileline_t com o conteúdo da linha
-//  * recebida como argumento. stype será empty se a linha estiver vazia
-//  * ou for de comentário e error se a linha não respeitar a sintaxe do
-//  * ficheiro de configuração. Caso contrário ou uma das estruturas
-//  * diskconf_t ou conf_t será preenchida com os valores lidos na linha.
-//  * No caso de conf_t, apenas o nome dos discos será preenchido (não o
-//  * número de setores. Utiliza a função chop para simplificar a avaliação
-//  */ 
-// void parseconfline(char* line,conffileline_t* confline){
+/**
+ * Preenche uma estrutura conffileline_t com o conteúdo da linha
+ * recebida como argumento. stype será empty se a linha estiver vazia
+ * ou for de comentário e error se a linha não respeitar a sintaxe do
+ * ficheiro de configuração. Caso contrário ou uma das estruturas
+ * diskconf_t ou conf_t será preenchida com os valores lidos na linha.
+ * No caso de conf_t, apenas o nome dos discos será preenchido (não o
+ * número de setores. Utiliza a função chop para simplificar a avaliação
+ */ 
+void parseconfline(char* line,conffileline_t* confline){
+	char opt[255];
+	int sectors=0;
+	char arg1[255];
+	char arg2[255];
+	char arg3[255];
+	char arg4[255];
 
-// }
+	if(sscanf(chop(line),"%s",opt)==-1)
+		confline->stype=emptyl;
+
+	if(strcmp(opt,"disc")==0)
+		if(sscanf(chop(line),"%s %s %d",opt,arg1,&sectors)==3){
+			confline->stype=diskl;
+			strcpy(confline->data.disk.name,arg1);
+			confline->data.disk.sectors=sectors;
+		}
+		else
+			confline->stype=errorf;
+	else if(strcmp(opt,"raidvss")==0){
+			if(sscanf(chop(line),"%s %s %s %s %s",opt,arg1,arg2,arg3,arg4)==5){
+				confline->stype=confl;
+				strcpy(confline->data.conf.name,arg1);
+				strcpy(confline->data.conf.disk[0].name,arg2);
+				strcpy(confline->data.conf.disk[1].name,arg3);
+				strcpy(confline->data.conf.imagefile,arg4);
+			}
+			else
+				confline->stype=errorf;
+		}
+	else
+		confline->stype=errorf;
+	
+}
 
 // /**
 //  * Recebe a lista de argumentos e copia para conffile o nome do
