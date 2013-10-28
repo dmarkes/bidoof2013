@@ -5,31 +5,50 @@
 #include "request.h"
 #include "conffileutils.h"
 
-int main(){
-	char z[] = "  disc  asdsa fds6 434 3 ";
-	conffileline_t* test=(conffileline_t*)malloc(sizeof(conffileline_t*));
-	parseconfline(z,test);
+int main(int argc, char *argv[]){
+	char* z[] = {"fsa","-f","conf","0"};
+	char t[255];
+
+	int i=0;
+
+	while(argv[i]!=NULL){
+		if(strcmp(argv[i],"-f")==0 && argv[i+1]!=NULL){
+			printf("return 2\n"); 
+		}
+		else if (strcmp(argv[i],"-f")==0 && argv[i+1]==NULL)
+			printf("return 0\n"); 
+		i++;
+	}
+	printf("return 1\n");;
+
+
+
+	// printf("%d\n",get_conf_name(z,t) );
+
+
+	// conffileline_t* test=(conffileline_t*)malloc(sizeof(conffileline_t*));
+	// parseconfline(z,test);
 
 	// if(test->stype==emptyl)
 	// 	printf("erro\n");
 	
-	printf("%s\n",test->data.disk.name);
-	printf("%d\n",test->data.disk.sectors);
-	printf("%s\n",test->data.conf.name);
-	printf("%s\n",test->data.conf.disk[0].name);
-	printf("%s\n",test->data.conf.disk[1].name);
-	printf("%s\n",test->data.conf.imagefile);
+	// printf("%s\n",test->data.disk.name);
+	// printf("%d\n",test->data.disk.sectors);
+	// printf("%s\n",test->data.conf.name);
+	// printf("%s\n",test->data.conf.disk[0].name);
+	// printf("%s\n",test->data.conf.disk[1].name);
+	// printf("%s\n",test->data.conf.imagefile);
 
 
 
-	if(test->stype==errorf)
-		printf("errorf\n");
-	if(test->stype==emptyl)
-		printf("EMPTYL\n");
-	if(test->stype==confl)
-		printf("confl\n");
-	if(test->stype==diskl)
-		printf("diskl\n");
+	// if(test->stype==errorf)
+	// 	printf("errorf\n");
+	// if(test->stype==emptyl)
+	// 	printf("EMPTYL\n");
+	// if(test->stype==confl)
+	// 	printf("confl\n");
+	// if(test->stype==diskl)
+	// 	printf("diskl\n");
 
 /*
 	if(strcmp(opt,"disc")==0)

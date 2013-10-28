@@ -68,17 +68,28 @@ void parseconfline(char* line,conffileline_t* confline){
 		confline->stype=errorf;
 	}
 
-// /**
-//  * Recebe a lista de argumentos e copia para conffile o nome do
-//  * ficheiro de configuração.
-//  * Retorna 1 se foi utilizado o nome de ficheiro por omissão ou 2 se
-//  * existia o parâmetro -f e por isso foi usado o nome
-//  * especificado. Retorna 0 se existe um parâmetro -f mas é inválido
-//  * (último argumento) 
-//  */
-// int get_conf_name(char* argv[], char* conffile){
+/**
+ * Recebe a lista de argumentos e copia para conffile o nome do
+ * ficheiro de configuração.
+ * Retorna 1 se foi utilizado o nome de ficheiro por omissão ou 2 se
+ * existia o parâmetro -f e por isso foi usado o nome
+ * especificado. Retorna 0 se existe um parâmetro -f mas é inválido
+ * (último argumento) 
+ */
+int get_conf_name(char* argv[], char* conffile){
+	int i=0;
 
-// }
+	while(argv[i]!=NULL){
+		if(strcmp(argv[i],"-f")==0 && argv[i+1]!=NULL){
+			strcpy(conffile,argv[i+1]);
+			return 2;
+		}
+		else if (strcmp(argv[i],"-f")==0 && argv[i+1]==NULL)
+			return 0;
+		i++;
+	}
+	return 1;
+}
 
 // /**
 //  * Copia a configuração src para dest
