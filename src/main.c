@@ -9,17 +9,37 @@ int main(int argc, char *argv[]){
 	char* z[] = {"fsa","-f","conf","0"};
 	char t[255];
 
-	int i=0;
 
-	while(argv[i]!=NULL){
-		if(strcmp(argv[i],"-f")==0 && argv[i+1]!=NULL){
-			printf("return 2\n"); 
-		}
-		else if (strcmp(argv[i],"-f")==0 && argv[i+1]==NULL)
-			printf("return 0\n"); 
-		i++;
-	}
-	printf("return 1\n");;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// int i=0;
+
+	// while(argv[i]!=NULL){
+	// 	if(strcmp(argv[i],"-f")==0 && argv[i+1]!=NULL){
+	// 		printf("return 2\n"); 
+	// 	}
+	// 	else if (strcmp(argv[i],"-f")==0 && argv[i+1]==NULL)
+	// 		printf("return 0\n"); 
+	// 	i++;
+	// }
+	// printf("return 1\n");;
 
 
 
