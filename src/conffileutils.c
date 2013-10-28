@@ -45,8 +45,7 @@ void parseconfline(char* line,conffileline_t* confline){
 
 	if(sscanf(chop(line),"%s",opt)==-1)
 		confline->stype=emptyl;
-
-	if(strcmp(opt,"disc")==0)
+	else if(strcmp(opt,"disc")==0)
 		if(sscanf(chop(line),"%s %s %d",opt,arg1,&sectors)==3){
 			confline->stype=diskl;
 			strcpy(confline->data.disk.name,arg1);
@@ -55,20 +54,19 @@ void parseconfline(char* line,conffileline_t* confline){
 		else
 			confline->stype=errorf;
 	else if(strcmp(opt,"raidvss")==0){
-			if(sscanf(chop(line),"%s %s %s %s %s",opt,arg1,arg2,arg3,arg4)==5){
-				confline->stype=confl;
-				strcpy(confline->data.conf.name,arg1);
-				strcpy(confline->data.conf.disk[0].name,arg2);
-				strcpy(confline->data.conf.disk[1].name,arg3);
-				strcpy(confline->data.conf.imagefile,arg4);
-			}
-			else
-				confline->stype=errorf;
+		if(sscanf(chop(line),"%s %s %s %s %s",opt,arg1,arg2,arg3,arg4)==5){
+			confline->stype=confl;
+			strcpy(confline->data.conf.name,arg1);
+			strcpy(confline->data.conf.disk[0].name,arg2);
+			strcpy(confline->data.conf.disk[1].name,arg3);
+			strcpy(confline->data.conf.imagefile,arg4);
+		}
+		else
+			confline->stype=errorf;
 		}
 	else
 		confline->stype=errorf;
-	
-}
+	}
 
 // /**
 //  * Recebe a lista de argumentos e copia para conffile o nome do
