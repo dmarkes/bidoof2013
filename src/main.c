@@ -4,11 +4,12 @@
 
 #include "request.h"
 #include "conffileutils.h"
+#include "diskutils.h"
 
 int main(int argc, char *argv[]){
-	char z[] = "sfdfda";
-	printf("%s\n",z);
-
+	char z[] = "sfdfdsasdada";
+	sector_t y=105;
+	put_sector(y,z);
 
 
 
