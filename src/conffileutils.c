@@ -95,11 +95,6 @@ int get_conf_name(char* argv[], char* conffile){
  * Copia a configuração src para dest
  */
 void copy_conf(conf_t* dest,conf_t* src){
-	strcpy(dest->name,src->name);
-	strcpy(dest->disk[0].name,src->disk[0].name);
-	dest->disk[0].sectors=src->disk[0].sectors;
-	strcpy(dest->disk[1].name,src->disk[1].name);
-	dest->disk[1].sectors=src->disk[1].sectors;
-	strcpy(dest->imagefile,src->imagefile);
+	*dest=*src;
 }
 
