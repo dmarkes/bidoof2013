@@ -21,9 +21,9 @@
  * Invocado por select_request
  * Retorna o indice do pedido selecionado
  */
-// int select_request_FCFS(request_t* pool,int out){
-
-// }
+int select_request_FCFS(request_t* pool,int out){
+	return out;
+}
 
 /**
  * Copia o sector corrente (dado pela variável global csector) do

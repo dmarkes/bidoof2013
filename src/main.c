@@ -7,25 +7,72 @@
 #include "diskutils.h"
 
 int main(int argc, char *argv[]){
-	char z[] = "sfdfdsasdada";
+
+
+
+	request_t reqt[3];
+	reqt[0].status=waiting;
+	reqt[0].sector=223;
+	reqt[1].sector=3432;
+	reqt[2].sector=98;
+	request_t t;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*	char z[] = "sfdfdsasdada";
 	sector_t y=105;
-	put_sector(y,z);
+	put_sector(y,z);*/
 
+	/*printf("SIZEOF:%d\n",(sizeof(int)));
 
+	request_t reqt;
+	reqt.status=waiting;
+	reqt.sector=223;
 
+	request_t copy;
+	copy_request(&reqt,&copy);
 
+	printf("%d\n",reqt.sector );
+	if(reqt.status==empty)
+		printf("empty\n");
+	else
+	printf("waiting\n");
 
+	reqt.status=empty;
+	reqt.sector=0;
 
-
-
-
-
-
-
-
-
-
-
+	printf("%d\n",reqt.sector );
+	if(reqt.status==empty)
+		printf("empty\n");
+	else
+	printf("waiting\n");
+	printf("%d\n",copy.sector );
+	if(copy.status==empty)
+		printf("empty\n");
+	else
+		printf("waiting\n");*/
 
 
 

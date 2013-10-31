@@ -25,7 +25,6 @@ $(BASE_DIR)/controller: $(OBJ_DIR)/controller.o $(OBJ_DIR)/request.o $(OBJ_DIR)/
 $(OBJ_DIR)/request.o: $(SRC_DIR)/request.c $(INC_DIR)/request.h
 	$(CC) $(CFLAGS) -c $(SRC_DIR)/request.c -o $(OBJ_DIR)/request.o
         
-        
 $(OBJ_DIR)/diskutils.o: $(SRC_DIR)/diskutils.c $(INC_DIR)/diskutils.h $(INC_DIR)/ipc.h $(INC_DIR)/disk.h
 	$(CC) $(CFLAGS) -c $(SRC_DIR)/diskutils.c -o $(OBJ_DIR)/diskutils.o
 
